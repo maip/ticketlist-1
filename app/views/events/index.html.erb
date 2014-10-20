@@ -1,10 +1,10 @@
-<h1>Listing events</h1>
+<h1>TicketList</h1>
 
-<table>
+<p>Your TicketList is waiting for you. Click on the thumbnail of an event to find out more.</p><table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Type</th>
+      <th>Event type</th>
       <th>Date</th>
       <th>Time</th>
       <th>Venue</th>
@@ -18,7 +18,7 @@
     <% @events.each do |event| %>
       <tr>
         <td><%= event.title %></td>
-        <td><%= event.type %></td>
+        <td><%= event.event_type %></td>
         <td><%= event.date %></td>
         <td><%= event.time %></td>
         <td><%= event.venue %></td>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_event_path %><br><br><p>Want to see your booked tickets? <%= link_to 'View now.', tickets_path %></p>

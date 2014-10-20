@@ -1,6 +1,7 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
-
+  respond_to :js, :html
+  
   def index
     @tickets = Ticket.all
     respond_with(@tickets)

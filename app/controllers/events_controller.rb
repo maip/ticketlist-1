@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  respond_to :js, :html
+  
   def index
     @events = Event.all
     respond_with(@events)
@@ -40,6 +41,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :type, :date, :time, :venue, :available_tickets, :total_tickets)
+      params.require(:event).permit(:title, :event_type, :date, :time, :venue, :available_tickets, :total_tickets)
     end
 end
