@@ -7,11 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<h1>TicketList</h1><%= image_tag "ticketlistlogo.png" %>
 
-<%= yield %>
+<div id="user_nav">
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+    <%= link_to "Settings", setting_index_path %>
+  <% else %>
+    Need an account? <%= link_to "Sign up.", new_user_registration_path %><br>
+    Already have an account? <%= link_to "Log in.", new_user_session_path %>
+  <% end %>
+</div>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
+
+<%= yield %>
+
+<br>
+<br>
+Contact Us
+<table>
+  <tr>
+    <td>Sichun Ai</td><td>sichunai@asu.edu</td>
+  </tr>
+  <tr>
+    <td>Melissa Ip</td><td>mip@asu.edu</td>
+  </tr>
+  <tr>
+    <td>Ayushi Jain</td><td>ajain64@asu.edu</td>
+  </tr>
+</table>
 
 </body>
 </html>

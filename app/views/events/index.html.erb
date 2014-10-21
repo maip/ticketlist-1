@@ -1,5 +1,5 @@
-<h1>TicketList</h1>
-
+<div id="events_page">
+  <% if user_signed_in? %>
 <p>Your TicketList is waiting for you. Click on the thumbnail of an event to find out more.</p><table>
   <thead>
     <tr>
@@ -35,3 +35,7 @@
 <br>
 
 <%= link_to 'New Event', new_event_path %><br><br><p>Want to see your booked tickets? <%= link_to 'View now.', tickets_path %></p>
+  <% else %>
+	An online ticket booking web application.
+  <% end %>
+</div>
