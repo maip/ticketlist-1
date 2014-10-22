@@ -38,6 +38,7 @@
 <p>
   <%= form_tag(tickets_path, :method => :post) do %>
   <%= hidden_field(:ticket, :event_id, :value => @event.id) %>
+  <%= hidden_field(:ticket, :user_id, :value => current_user.id) %>
   <% if @event.available_tickets == 0 %>
     No more available tickets.
   <% else %>

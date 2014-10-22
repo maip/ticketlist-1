@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141020052455) do
 
   create_table "tickets", force: true do |t|
     t.integer  "event_id"
+    t.integer  "user_id"
     t.integer  "num_booked"
     t.datetime "created_at"
     t.datetime "updated_at"
