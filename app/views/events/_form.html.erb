@@ -20,12 +20,8 @@
     <%= f.text_field :event_type %>
   </div>
   <div class="field">
-    <%= f.label :date %><br>
-    <%= f.text_field :date %>
-  </div>
-  <div class="field">
-    <%= f.label :time %><br>
-    <%= f.text_field :time %>
+    <%= f.label :datetime %><br>
+    <%= f.datetime_select :datetime, :ampm => true, :order => [:month, :day, :year] %>
   </div>
   <div class="field">
     <%= f.label :venue %><br>

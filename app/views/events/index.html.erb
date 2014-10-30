@@ -5,8 +5,7 @@
     <tr>
       <th>Title</th>
       <th>Event type</th>
-      <th>Date</th>
-      <th>Time</th>
+      <th>Date and Time</th>
       <th>Venue</th>
       <th>Available tickets</th>
       <th>Total tickets</th>
@@ -19,8 +18,7 @@
       <tr>
         <td><%= event.title %></td>
         <td><%= event.event_type %></td>
-        <td><%= event.date %></td>
-        <td><%= event.time %></td>
+        <td><%= event.datetime.strftime("%m/%d/%Y %I:%M%p") %></td>
         <td><%= event.venue %></td>
         <td><%= event.available_tickets %></td>
         <td><%= event.total_tickets %></td>
@@ -39,3 +37,4 @@
 	An online ticket booking web application.
   <% end %>
 </div>
+

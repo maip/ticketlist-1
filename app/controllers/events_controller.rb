@@ -5,6 +5,8 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     respond_with(@events)
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today #This is from railscast.com for the datepicker
+
   end
 
   def show
@@ -41,6 +43,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:title, :event_type, :date, :time, :venue, :available_tickets, :total_tickets)
+      params.require(:event).permit(:title, :event_type, :datetime, :venue, :available_tickets, :total_tickets)
     end
 end
