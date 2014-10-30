@@ -21,8 +21,21 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    @ticket.save
-    respond_with(@ticket)
+
+    @event = Event.find(@ticket.event_id)
+    @event.update_attribute :available_tickets, @event.available_tickets-@ticket.num_booked
+    @event.save
+    
+    existing_ticket = Ticket.find_by({:event_id => @ticket.event_id, :user_id => @ticket.user_id})
+    if existing_ticket.nil?
+      @ticket.save
+      respond_with(@ticket)
+    else
+      flash[:notice] = "Added #{existing_ticket.num_booked} ticket(s) to #{@ticket.num_booked} existing ticket(s)."
+      existing_ticket.update_attribute :num_booked, existing_ticket.num_booked+@ticket.num_booked
+      existing_ticket.save
+      respond_with(existing_ticket)
+    end
   end
 
   def update
@@ -41,6 +54,6 @@ class TicketsController < ApplicationController
     end
 
     def ticket_params
-      params.require(:ticket).permit(:event, :num_booked)
+      params.require(:ticket).permit(:event_id, :user_id, :num_booked)
     end
 end

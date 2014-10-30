@@ -11,9 +11,10 @@
 
 <div id="user_nav">
   <% if user_signed_in? %>
+    <%= image_tag current_user.avatar.url(:thumb) %>
     Signed in as <%= current_user.email %>. Not you?
     <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-    <%= link_to "Settings", setting_index_path %>
+    <%= link_to "Settings", edit_user_registration_path %>
   <% else %>
     Need an account? <%= link_to "Sign up.", new_user_registration_path %><br>
     Already have an account? <%= link_to "Log in.", new_user_session_path %>

@@ -1,6 +1,3 @@
-
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @event.title %>
@@ -29,6 +26,20 @@
 <p>
   <strong>Total tickets:</strong>
   <%= @event.total_tickets %>
+</p>
+
+<p>
+  <%= form_tag(tickets_path, :method => :post) do %>
+  <%= hidden_field(:ticket, :event_id, :value => @event.id) %>
+  <%= hidden_field(:ticket, :user_id, :value => current_user.id) %>
+  <% if @event.available_tickets == 0 %>
+    No more available tickets.
+  <% else %>
+    <%= number_field(:ticket, :num_booked, value: 1, in: 1...@event.available_tickets+1) %>
+    <%= submit_tag("Book") %>
+  <% end %>
+<% end %>
+
 </p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
