@@ -31,6 +31,7 @@ class TicketsController < ApplicationController
       @ticket.save
       respond_with(@ticket)
     else
+      flash[:notice] = "Added #{existing_ticket.num_booked} ticket(s) to #{@ticket.num_booked} existing ticket(s)."
       existing_ticket.update_attribute :num_booked, existing_ticket.num_booked+@ticket.num_booked
       existing_ticket.save
       respond_with(existing_ticket)
