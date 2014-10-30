@@ -27,14 +27,17 @@
     <%= f.label :venue %><br>
     <%= f.text_field :venue %>
   </div>
+
   <div class="field">
     <%= f.label :available_tickets %><br>
-    <%= f.number_field :available_tickets %>
+    <%= f.number_field :available_tickets, value: 1 %>
   </div>
+    
   <div class="field">
     <%= f.label :total_tickets %><br>
-    <%= f.number_field :total_tickets %>
+    <%= f.number_field :total_tickets, value: 1 %>
   </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

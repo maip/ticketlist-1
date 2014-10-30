@@ -23,8 +23,13 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
-    respond_with(@event)
+    if @event.available_tickets > @event.total_tickets
+      flash[:alert] = "The number of available tickets is greater than the amount of total tickets."
+      redirect_to new_event_path
+    else
+      @event.save
+      respond_with(@event)
+    end
   end
 
   def update
