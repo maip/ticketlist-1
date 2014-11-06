@@ -1,3 +1,18 @@
+<style>
+.form {
+    width: 25%;
+    min-width: 500px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: 150px;
+    padding-top: 50px;
+    padding-bottom: 70px;
+    border: outset;
+    border-radius: 20px;
+}
+</style>
+
+<div class="form">
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -13,6 +28,8 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
 
   <div><%= f.submit "Sign up" %></div>
+  
 <% end %>
 
 <%= render "devise/shared/links" %>
+</div>

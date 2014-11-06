@@ -1,3 +1,23 @@
+<style>
+  #event {
+    width: 90%;
+    min-width: 500px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border: outset;
+    padding-left: 50px;
+    padding-bottom: 15px;
+    padding-top: 25px;
+    border-radius: 20px;
+  }
+</style>
+
+<div id="event">
+
+<p><%= image_tag @event.photo.url(:medium) %></p>
+
 <p>
   <strong>Title:</strong>
   <%= @event.title %>
@@ -49,3 +69,5 @@
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+</div>

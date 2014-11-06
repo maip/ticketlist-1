@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html>
+
+<style>
+#user_nav {
+    width: 25%;
+    min-width: 500px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.background1 {
+  background-color: red;
+}
+
+footer td{
+  text-align: center;
+  padding: 0 15px;
+}
+
+footer table{
+  margin: 0 auto;
+  padding-bottom: 0px;
+}
+
+footer {
+  background-color: black;
+  color: white;
+}
+</style>
+
 <head>
   <title>Ticketlist</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application.css.scss', media: 'all', 'data-turbolinks-track' => true %>
+
+<!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-<h1>TicketList</h1><%= image_tag "ticketlistlogo.png" %>
+
+<body style="background-image: url(back.jpg)">
+<%= image_tag "ticketlistlogo.png" %>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="height: 40px">
+      <div class="navbar-header">
+        <%= link_to (image_tag "ticketlistlogo.png"), events_path %>
+        <a class="navbar-brand" href="#" style="font-size: 40px">TicketList</a>
+      </div>
+      <div class="collapse navbar-collapse">
+      </div><!--/.nav-collapse -->
+</div>
+
+<div class="backgroud1">
+
 
 <div id="user_nav">
   <% if user_signed_in? %>
@@ -26,20 +75,23 @@
 
 <%= yield %>
 
+
 <br>
 <br>
-Contact Us
-<table>
-  <tr>
-    <td>Sichun Ai</td><td>sichunai@asu.edu</td>
-  </tr>
-  <tr>
-    <td>Melissa Ip</td><td>mip@asu.edu</td>
-  </tr>
-  <tr>
-    <td>Ayushi Jain</td><td>ajain64@asu.edu</td>
-  </tr>
-</table>
+ 
+  
+<footer>
+  <table>
+    <tr>
+      <td>Contact Us:&nbsp;&nbsp;&nbsp;</td>
+      <td>Sichun Ai</td><td>sichunai@asu.edu&nbsp;</td>
+      <td>Melissa Ip</td> <td>mip@asu.edu&nbsp;</td>
+      <td>Ayushi Jain</td> <td>ajain64@asu.edu&nbsp;</td>
+    </tr>
+  </table>
+</footer>
+
+</div>
 
 </body>
 </html>

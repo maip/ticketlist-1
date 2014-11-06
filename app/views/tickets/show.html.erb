@@ -1,3 +1,21 @@
+<style>
+  #ticket {
+    width: 90%;
+    min-width: 500px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border: outset;
+    padding-left: 50px;
+    padding-bottom: 15px;
+    padding-top: 25px;
+    border-radius: 20px;
+  }
+</style>
+
+<div id="ticket">
+
 <p>
   <strong>Event id:</strong>
   <%= @ticket.event_id %>
@@ -13,5 +31,8 @@
   <%= @ticket.num_booked %>
 </p>
 
+
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
+
+</div>
