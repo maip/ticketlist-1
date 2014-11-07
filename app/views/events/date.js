@@ -1,4 +1,0 @@
-$(fucntuon() {
-	$($"Date").datepicker();
-
-});
