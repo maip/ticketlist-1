@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   
   def index
     @events = Event.all
+    @events = @events.sort_by &:datetime
     respond_with(@events)
     @date = params[:month] ? Date.parse(params[:month]) : Date.today #This is from railscast.com for the datepicker
 
