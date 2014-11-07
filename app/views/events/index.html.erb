@@ -1,8 +1,43 @@
+<style>
+#events_page {
+    width: 90%;
+    min-width: 500px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border: outset;
+    padding-left: 50px;
+    padding-bottom: 15px;
+    padding-top: 25px;
+    border-radius: 20px;
+}
+
+table th{
+  padding: 0 30px;
+  border-bottom: double;
+}
+
+tbody td{
+  padding: 0 30px;
+}
+
+.num-tickets {
+  text-align: center;
+}
+</style>
+
+
+
 <div id="events_page">
   <% if user_signed_in? %>
-<p>Your TicketList is waiting for you. Click on the thumbnail of an event to find out more.</p><table>
+
+  <p>Your TicketList is waiting for you. Click on the thumbnail of an event to find out more.</p>
+
+<table>
   <thead>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Event type</th>
       <th>Date and Time</th>
@@ -16,6 +51,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
+        <td><%= image_tag event.photo.url(:medium) %></td>
         <td><%= event.title %></td>
         <td><%= event.event_type %></td>
         <td><%= event.datetime.strftime("%m/%d/%Y %I:%M%p") %></td>

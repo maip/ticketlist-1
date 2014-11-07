@@ -1,5 +1,22 @@
-<h1>New event</h1>
+<style>
+.event-form {
+    width: 50%;
+    min-width: 500px;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    border: outset;
+    padding-left: 50px;
+    padding-bottom: 15px;
+    border-radius: 20px;
+}
+</style>
+
+<div class="event-form">
+<h1 style="font-family: Times New Roman;">New Event</h1>
 
 <%= render 'form' %>
 
 <%= link_to 'Back', events_path %>
+</div>
