@@ -18,9 +18,9 @@ class EventsController < ApplicationController
   end
 
   def edit
-    if @event.available_tickets > @event.total_tickets
+    if :available_tickets > :total_tickets
       flash[:alert] = "The number of available tickets is greater than the amount of total tickets."
-      redirect_to edit_event_path (@event)
+      redirect_to edit_event_path(@event)
     end
   end
 

@@ -1,7 +1,4 @@
-<!--
-form for new tickets
--->
-
+<% Time.zone = 'MST' %>
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -26,7 +23,9 @@ form for new tickets
   </div>
   <div class="field">
     <%= f.label :datetime %><br>
+    <% Time.use_zone('MST') do %>
     <%= f.datetime_select :datetime, :ampm => true, :order => [:month, :day, :year] %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :venue %><br>
