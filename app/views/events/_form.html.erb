@@ -24,7 +24,7 @@
   <div class="field">
     <%= f.label :datetime %><br>
     <% Time.use_zone('MST') do %>
-    <%= f.datetime_select :datetime, :ampm => true, :order => [:month, :day, :year] %>
+    <%= f.datetime_select :datetime, start_year: 2014, end_year: 2034, :ampm => true, :order => [:month, :day, :year] %>
     <% end %>
   </div>
   <div class="field">
