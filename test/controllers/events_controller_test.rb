@@ -21,6 +21,8 @@ class EventsControllerTest < ActionController::TestCase
       post :create, event: { available_tickets: @event.available_tickets, date: @event.date, event_type: @event.event_type, time: @event.time, title: @event.title, total_tickets: @event.total_tickets, venue: @event.venue }
     end
 
+    assert (@event.available_tickets <= @event.total_tickets [ "Available tickets is not less than or equal to total tickets"])
+    
     assert_redirected_to event_path(assigns(:event))
   end
 

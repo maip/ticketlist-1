@@ -26,17 +26,12 @@
 <p>
   <strong>Event type:</strong>
   <%= @event.event_type %>
+
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>Time:</strong>
-  <%= @event.time %>
-</p>
+  <strong>Date and Time:</strong>
+  <%= @event.datetime.strftime("%m/%d/%Y %I:%M%p") %>
 
 <p>
   <strong>Venue:</strong>
@@ -71,3 +66,4 @@
 <%= link_to 'Back', events_path %>
 
 </div>
+
