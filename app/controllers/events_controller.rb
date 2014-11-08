@@ -23,7 +23,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if available_tickets > total_tickets
+    if @event.available_tickets > @event.total_tickets
       flash[:alert] = "The number of available tickets is greater than the amount of total tickets."
       redirect_to new_event_path
     else if @event.datetime < DateTime.current
@@ -32,7 +32,6 @@ class EventsController < ApplicationController
     else
       @event.save
       respond_with(@event)
-    end
     end
   end
 
