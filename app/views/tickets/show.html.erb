@@ -16,15 +16,37 @@
 
 <div id="ticket">
 
+<% event = Event.find(@ticket.event_id) %>
+
+
+<p><%= link_to (image_tag event.photo.url(:medium)), event %></p>
+
+
 <p>
-  <strong>Event id:</strong>
-  <%= @ticket.event_id %>
+  <strong>Event title:</strong>
+  <%= event.title %>
 </p>
 
 <p>
-  <strong>User id:</strong>
-  <%= @ticket.user_id %>
+  <strong>Event type:</strong>
+  <%= event.event_type %>
 </p>
+
+<p>
+  <strong>Event date:</strong>
+  <%= event.date %>
+</p>
+
+<p>
+  <strong>Event time:</strong>
+  <%= event.time %>
+</p>
+
+<p>
+  <strong>Event venue:</strong>
+  <%= event.venue %>
+</p>
+
 
 <p>
   <strong>Num booked:</strong>
@@ -35,4 +57,3 @@
 <%= link_to 'Edit', edit_ticket_path(@ticket) %> |
 <%= link_to 'Back', tickets_path %>
 
-</div>
