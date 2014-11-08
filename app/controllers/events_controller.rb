@@ -31,6 +31,13 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    tickets = Ticket.all
+    tickets.each do |ticket|
+      if ticket.event_id == @event.id
+        Ticket.destroy(ticket)
+      end
+    end
+    
     @event.destroy
     respond_with(@event)
   end

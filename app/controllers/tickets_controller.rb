@@ -4,6 +4,16 @@ class TicketsController < ApplicationController
   
   def index
     @tickets = Ticket.all
+    sorted_tickets = []
+    events = Event.all.sort_by &:datetime
+    events.each do |event|
+      @tickets.each do |ticket|
+        if event.id == ticket.event_id
+          sorted_tickets.push(ticket)
+        end
+      end
+    end
+    @ticket = sorted_tickets
     respond_with(@tickets)
   end
 
