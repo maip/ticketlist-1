@@ -34,12 +34,7 @@
 
 <p>
   <strong>Event date:</strong>
-  <%= event.date %>
-</p>
-
-<p>
-  <strong>Event time:</strong>
-  <%= event.time %>
+  <%= event.datetime.strftime("%m/%d/%Y %I:%M%p") %>
 </p>
 
 <p>
