@@ -4,7 +4,10 @@ class EventsController < ApplicationController
   
   def index
     @events = Event.all
+    @events = @events.sort_by &:datetime
     respond_with(@events)
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today #This is from railscast.com for the datepicker
+
   end
 
   def show
@@ -21,8 +24,13 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save
-    respond_with(@event)
+    if @event.available_tickets > @event.total_tickets
+      flash[:alert] = "The number of available tickets is greater than the amount of total tickets."
+      redirect_to new_event_path
+    else
+      @event.save
+      respond_with(@event)
+    end
   end
 
   def update
@@ -48,6 +56,8 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:photo, :title, :event_type, :date, :time, :venue, :available_tickets, :total_tickets)
+
+      params.require(:event).permit(:title, :event_type, :datetime, :venue, :available_tickets, :total_tickets)
+
     end
 end

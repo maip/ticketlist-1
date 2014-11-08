@@ -39,6 +39,11 @@ tbody td{
     <tr>
       <th></th>
       <th>Title</th>
+      <th>Event type</th>
+      <th>Date and Time</th>
+      <th>Venue</th>
+      <th>Available tickets</th>
+      <th>Total tickets</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -48,7 +53,12 @@ tbody td{
       <tr>
         <td><%= image_tag event.photo.url(:medium) %></td>
         <td><%= event.title %></td>
-                <td><%= link_to 'Show', event %></td>
+        <td><%= event.event_type %></td>
+        <td><%= event.datetime.strftime("%m/%d/%Y %I:%M%p") %></td>
+        <td><%= event.venue %></td>
+        <td><%= event.available_tickets %></td>
+        <td><%= event.total_tickets %></td>
+        <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -63,3 +73,4 @@ tbody td{
 	An online ticket booking web application.
   <% end %>
 </div>
+

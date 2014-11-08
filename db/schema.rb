@@ -16,8 +16,7 @@ ActiveRecord::Schema.define(version: 20141030041552) do
   create_table "events", force: true do |t|
     t.string   "title"
     t.string   "event_type"
-    t.string   "date"
-    t.string   "time"
+    t.datetime "datetime"
     t.string   "venue"
     t.integer  "available_tickets"
     t.integer  "total_tickets"
