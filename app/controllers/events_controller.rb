@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     if @event.available_tickets > @event.total_tickets
       flash[:alert] = "The number of available tickets is greater than the amount of total tickets."
       redirect_to new_event_path
-    else if @event.datetime < DateTime.current
+    elsif @event.datetime < DateTime.current
       flash[:alert] = "The date of the event cannot be set in the past."
       redirect_to new_event_path
     else
