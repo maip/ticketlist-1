@@ -45,6 +45,7 @@ tbody td{
 
   <tbody>
     <% @events.each do |event| %>
+
       <tr>
         <td><%= link_to (image_tag event.photo.url(:small)), event %></td>
         <td><%= event.title %></td>
@@ -52,6 +53,7 @@ tbody td{
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>

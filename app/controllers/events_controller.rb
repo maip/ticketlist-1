@@ -1,12 +1,11 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   respond_to :js, :html
-  
+
   def index
     @events = Event.all
     @events = @events.sort_by &:datetime
     respond_with(@events)
-    @date = params[:month] ? Date.parse(params[:month]) : Date.today #This is from railscast.com for the datepicker
   end
 
   def show
@@ -19,6 +18,10 @@ class EventsController < ApplicationController
   end
 
   def edit
+    if @event.available_tickets > @event.total_tickets
+      flash[:alert] = "The number of available tickets is greater than the amount of total tickets."
+      redirect_to edit_event_path (@event)
+    end
   end
 
   def create
