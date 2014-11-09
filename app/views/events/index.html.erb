@@ -32,7 +32,7 @@ tbody td{
 <div id="events_page">
   <% if user_signed_in? %>
 
-  <p>Your TicketList is waiting for you. Click on the thumbnail of an event to find out more.</p>
+  <p>Your TicketList is listed by event time. Events with a date and time older than the current date and time will not be displayed. Click on the thumbnail of an event to find out more.</p>
 
 <table>
   <% if !@events.empty? %>
@@ -43,6 +43,8 @@ tbody td{
       <th colspan="3"></th>
     </tr>
   </thead>
+  <% else %>
+  There are no events. Create one to get started.
   <% end %>
   
   <% Time.zone = 'MST' %>

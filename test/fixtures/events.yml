@@ -3,17 +3,19 @@
 one:
   title: MyString
   event_type: MyString
-  datetime: MyDateTime
+  datetime: DateTime.new(2012, 8, 29, 22, 35, 0)
   venue: MyString
   available_tickets: 1
   total_tickets: 1
   user_id: 1
+  id: 1
 
 two:
   title: MyString
   event_type: MyString
-  datetime: MyDateTime
+  datetime: DateTime.new(2012, 8, 29, 22, 35, 0)
   venue: MyString
   available_tickets: 1
   total_tickets: 1
   user_id: 1
+  id: 2

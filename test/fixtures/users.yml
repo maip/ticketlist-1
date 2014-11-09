@@ -6,12 +6,14 @@
 #
 one: {
 	email: someone@gmail.com,
-	encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+	encrypted_password: <%= Devise.bcrypt(User, 'password') %>,
+	id: 1
 }
 # column: value
 #
 two: {
 	email: someone2@gmail.com,
-	encrypted_password: <%= Devise.bcrypt(User, 'password') %>
+	encrypted_password: <%= Devise.bcrypt(User, 'password') %>,
+	id: 2
 }
 #  column: value
