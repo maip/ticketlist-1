@@ -9,7 +9,7 @@ class TicketsControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_not_nil assigns(:tickets)
-    # check sorted by datetime
+    # assert sorted by event datetime
   end
 
   test "should get new" do
@@ -21,7 +21,7 @@ class TicketsControllerTest < ActionController::TestCase
     event = Event.find(@ticket.event_id)
     before_available_tickets = event.available_tickets
     assert_difference('Ticket.count') do
-      post :create, ticket: { event_id: @ticket.event_id, user_id: @ticket.user_id,  num_booked: @ticket.num_booked }
+      post :create, ticket: { event_id: @ticket.event_id, user_id: @ticket.user_id, num_booked: @ticket.num_booked }
     end
     assert(event.available_tickets == before_available_tickets-@ticket.num_booked, 'Incorrect subtraction of tickets booked from available tickets' )
     assert_redirected_to ticket_path(assigns(:ticket))
@@ -41,7 +41,6 @@ class TicketsControllerTest < ActionController::TestCase
     assert_difference('Ticket.count', -1) do
       delete :destroy, id: @ticket
     end
-
     assert_redirected_to tickets_path
   end
 
