@@ -35,6 +35,8 @@ tbody td{
   <p>Your TicketList is waiting for you. Click on the thumbnail of an event to find out more.</p>
 
 <table>
+  <% @events.each do |event| %>
+      <% if event.datetime >= DateTime.current %>
   <thead>
     <tr>
       <th></th>
@@ -45,8 +47,7 @@ tbody td{
   
   <% Time.zone = 'MST' %>
   <tbody>
-    <% @events.each do |event| %>
-      <% if event.datetime >= DateTime.current %>
+    
         <tr>
           <td><%= link_to (image_tag event.photo.url(:small)), event %></td>
           <td><%= event.title %></td>
