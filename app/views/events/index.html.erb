@@ -35,6 +35,7 @@ tbody td{
   <p>Your TicketList is waiting for you. Click on the thumbnail of an event to find out more.</p>
 
 <table>
+  <% if !@events.empty? %>
   <thead>
     <tr>
       <th></th>
@@ -42,6 +43,7 @@ tbody td{
       <th colspan="3"></th>
     </tr>
   </thead>
+  <% end %>
   
   <% Time.zone = 'MST' %>
   <tbody>
