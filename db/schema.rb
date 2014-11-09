@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141030041552) do
     t.string   "venue"
     t.integer  "available_tickets"
     t.integer  "total_tickets"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"

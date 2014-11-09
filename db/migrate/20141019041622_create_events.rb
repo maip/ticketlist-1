@@ -7,7 +7,8 @@ class CreateEvents < ActiveRecord::Migration
       t.string :venue
       t.integer :available_tickets
       t.integer :total_tickets
-
+      t.integer :user_id
+      
       t.timestamps
     end
   end
