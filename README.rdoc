@@ -1,28 +1,22 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WINDOWS INSTRUCTIONS
+1. Download Ruby 2.1.4 from http://rubyinstaller.org/downloads/
+2. Open command prompt and type ```gem install rails``` to install Rails 4
+3. Download imagemagick from http://www.imagemagick.org/script/binary-releases.php#windows
+4. Extract and move the folder to C:/Program Files so that the path will be "C:/Program Files/ImageMagick-6.8.9-Q16"
+5. In command prompt, type ```bundle install``` to download dependencies 
+6. To set up the database ```rake db:migrate```
+7. Run the rails server by typing ```rails server``
+8. Run web application by accessing the address ```localhost:3000``` in a web browser
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+MAC INSTRUCTIONS
+1. Ruby is already installed on Mac but users may wish to download the latest version of rails from http://rubyinstaller.org/downloads/
+2. Open a terminal and type ```gem install rails``` to install Rails 4
+3. Download imagemagick from http://www.imagemagick.org/script/binary-releases.php#macosx
+4. Extract and move the folder to some path.
+5. Modify this line ```Paperclip.options[:command_path] = "C:/Program Files/ImageMagick-6.8.9-Q16"``` in ```config/environments/development.rb``` to the path where you put imagemagick
+6. In command prompt, type ```bundle install``` to download dependencies 
+7. To set up the database ```rake db:migrate```
+8. Run the rails server by typing ```rails server``
+9. Run web application by accessing the address ```localhost:3000``` in a web browser
