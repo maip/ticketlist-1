@@ -1,17 +1,17 @@
 == README
 
 WINDOWS INSTRUCTIONS
-1. Download Ruby 2.1.4 from http://rubyinstaller.org/downloads/
+1. Download Ruby 2.1.4 from http://rubyinstaller.org/downloads
 2. Open command prompt and type ```gem install rails``` to install Rails 4
 3. Download imagemagick from http://www.imagemagick.org/script/binary-releases.php#windows
-4. Extract and move the folder to C:/Program Files so that the path will be "C:/Program Files/ImageMagick-6.8.9-Q16"
+4. Extract and move the folder to C:/Program Files so that the path will be ```C:/Program Files/ImageMagick-6.8.9-Q16```
 5. In command prompt, type ```bundle install``` to download dependencies 
 6. To set up the database ```rake db:migrate```
-7. Run the rails server by typing ```rails server``
+7. Run the rails server by typing ```rails server```
 8. Run web application by accessing the address ```localhost:3000``` in a web browser
 
 MAC INSTRUCTIONS
-1. Ruby is already installed on Mac but users may wish to download the latest version of rails from http://rubyinstaller.org/downloads/
+1. Ruby is already installed on Mac but users may wish to download the latest version of rails from http://rubyinstaller.org/downloads
 2. Open a terminal and type ```gem install rails``` to install Rails 4
 3. Download imagemagick from http://www.imagemagick.org/script/binary-releases.php#macosx
 4. Extract and move the folder to some path.
