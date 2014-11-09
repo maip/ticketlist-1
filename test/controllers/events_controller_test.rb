@@ -18,11 +18,8 @@ class EventsControllerTest < ActionController::TestCase
 
   test "should create event" do
     assert_difference('Event.count') do
-      post :create, event: { available_tickets: @event.available_tickets, date: @event.date, event_type: @event.event_type, time: @event.time, title: @event.title, total_tickets: @event.total_tickets, venue: @event.venue }
+      post :create, event: { available_tickets: @event.available_tickets, datetime: @event.datetime, event_type: @event.event_type, title: @event.title, total_tickets: @event.total_tickets, venue: @event.venue, user_id: @event.user_id }
     end
-
-    assert (@event.available_tickets <= @event.total_tickets [ "Available tickets is not less than or equal to total tickets"])
-    
     assert_redirected_to event_path(assigns(:event))
   end
 
@@ -37,7 +34,7 @@ class EventsControllerTest < ActionController::TestCase
   end
 
   test "should update event" do
-    patch :update, id: @event, event: { available_tickets: @event.available_tickets, date: @event.date, event_type: @event.event_type, time: @event.time, title: @event.title, total_tickets: @event.total_tickets, venue: @event.venue }
+    patch :update, id: @event, event: { available_tickets: @event.available_tickets, datetime: @event.datetime, event_type: @event.event_type, title: @event.title, total_tickets: @event.total_tickets, venue: @event.venue, user_id: @event.user_id }
     assert_redirected_to event_path(assigns(:event))
   end
 

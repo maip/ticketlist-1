@@ -3,17 +3,17 @@
 one:
   title: MyString
   event_type: MyString
-  date: MyString
-  time: MyString
+  datetime: MyDateTime
   venue: MyString
   available_tickets: 1
   total_tickets: 1
+  user_id: 1
 
 two:
   title: MyString
   event_type: MyString
-  date: MyString
-  time: MyString
+  datetime: MyDateTime
   venue: MyString
   available_tickets: 1
   total_tickets: 1
+  user_id: 1
