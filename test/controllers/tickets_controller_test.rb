@@ -30,6 +30,26 @@ class TicketsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+
+  test "should show tickets by time" do
+    get :index, id: @etickets_controller
+    assert(@ticket == @ticket.sort_by &:datetime, 'sorts tickets by time')
+  end
+
+
+  test "updating available tickets after booking tickets" do
+    get :ticket, id: @ticket
+   assert(@ticket.available_tickets > @ticket.total_tickets, 'The number of available tickets is greater than total tickets' )
+  end
+
+    test "book tickets function" do
+   assert_difference('ticket.count') do
+      post :book, ticket: { available_tickets: @ticket.available_tickets, user_id: @ticket.user_id, datetime: @ticket.datetime, event_type: @ticket.event_type, title: @ticket.title, total_tickets: @ticket.total_tickets, venue: @ticket.venue }
+      patch :update, id: @ticket, ticket: { available_tickets: @ticket.available_tickets, user_id: @ticket.user_id, datetime: @ticket.datetime, ticket_type: @ticket.ticket_type, title: @ticket.title, total_tickets: @ticket.total_tickets, venue: @ticket.venue }
+    assert_redirected_to ticket_path(assigns(:ticket))
+  end
+end
+
   test "should get edit" do
     get :edit, id: @ticket
     assert_response :success
