@@ -3,7 +3,7 @@
 one:
   title: MyString
   event_type: MyString
-  datetime: DateTime.new(2014, 8, 29, 22, 35, 0)
+  datetime: <%= DateTime.current.change(year: 2015) %>
   venue: MyString
   available_tickets: 1
   total_tickets: 1
@@ -13,9 +13,19 @@ one:
 two:
   title: MyString
   event_type: MyString
-  datetime: DateTime.new(2015, 8, 29, 22, 35, 0)
+  datetime: <%= DateTime.current.change(year: 2016) %>
   venue: MyString
   available_tickets: 1
   total_tickets: 1
   user_id: 1
   id: 2
+
+three:
+  title: MyString
+  event_type: MyString
+  datetime: <%= DateTime.current.change(year: 2014) %>
+  venue: MyString
+  available_tickets: 1
+  total_tickets: 1
+  user_id: 1
+  id: 3

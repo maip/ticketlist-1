@@ -6,6 +6,6 @@ one:
   num_booked: 1
 
 two:
-  event_id: 1
+  event_id: 2
   user_id: 1
   num_booked: 1
