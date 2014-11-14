@@ -3,14 +3,22 @@ require 'test_helper'
 class TicketsControllerTest < ActionController::TestCase
   setup do
     @ticket = tickets(:one)
+    @event = events(:one)
+    @user = users(:one)
   end
 
-  test "should get index" do
-    get :index
+  test "should sign in user" do
+    sign_in @user
     assert_response :success
-    assert_not_nil assigns(:tickets)
-    # assert sorted by event datetime
+    assert @controller.instance_variable_set(:"@current_user", true)
   end
+
+  # test "should get index" do
+  #   get :index
+  #   assert_response :success
+  #   assert_not_nil assigns(:tickets)
+  #   # assert sorted by event datetime
+  # end
 
   test "should get new" do
     get :new
@@ -18,13 +26,27 @@ class TicketsControllerTest < ActionController::TestCase
   end
 
   test "should create ticket" do
-    event = Event.find(@ticket.event_id)
-    before_available_tickets = event.available_tickets
+    event = Event.create({
+      available_tickets: @event.available_tickets,
+      datetime: @event.datetime,
+      event_type: @event.event_type,
+      title: @event.title,
+      total_tickets: @event.total_tickets,
+      venue: @event.venue,
+      photo: fixture_file_upload('placeholder.png', 'image/png')
+    })
     assert_difference('Ticket.count') do
-      post :create, ticket: { event_id: @ticket.event_id, user_id: @ticket.user_id, num_booked: @ticket.num_booked }
+      post :create, ticket: { event_id: event.id, user_id: @ticket.user_id, num_booked: @ticket.num_booked }
     end
-    assert(event.available_tickets == before_available_tickets-@ticket.num_booked, 'Incorrect subtraction of tickets booked from available tickets' )
     assert_redirected_to ticket_path(assigns(:ticket))
+    
+    ticket = Ticket.create({
+      event_id: event.id,
+      user_id: @current_user,
+      num_booked: @ticket.num_booked
+    })
+    found_event = Event.find(ticket.event_id)
+    assert(found_event.available_tickets == @event.available_tickets-ticket.num_booked, "#{found_event.available_tickets} != #{@event.available_tickets} - #{ticket.num_booked}" )
   end
 
   test "should show ticket" do

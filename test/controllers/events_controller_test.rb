@@ -4,7 +4,18 @@ class EventsControllerTest < ActionController::TestCase
   setup do
     @event = events(:one)
     @future_event = events(:two)
-    @past_event = events(:three)
+    # @past_event = events(:three)
+    @user = users(:one)
+  end
+
+  test "should sign in user" do
+    user = User.create({
+      email: @user.email,
+      encrypted_password: @user.encrypted_password
+    })
+    sign_in user
+    assert_response :success
+    assert @controller.instance_variable_set(:"@current_user", true)
   end
 
   test "should get index" do
@@ -19,7 +30,6 @@ class EventsControllerTest < ActionController::TestCase
       title: @event.title,
       total_tickets: @event.total_tickets,
       venue: @event.venue,
-      user_id: @event.user_id,
       photo: fixture_file_upload('placeholder.png', 'image/png')
     })
     future_event = Event.create({ available_tickets: @future_event.available_tickets,
@@ -28,7 +38,6 @@ class EventsControllerTest < ActionController::TestCase
       title: @future_event.title,
       total_tickets: @future_event.total_tickets,
       venue: @future_event.venue,
-      user_id: @future_event.user_id,
       photo: fixture_file_upload('placeholder.png', 'image/png')
     })
     all = Event.all
@@ -51,7 +60,6 @@ class EventsControllerTest < ActionController::TestCase
                       title: @event.title,
                       total_tickets: @event.total_tickets,
                       venue: @event.venue,
-                      user_id: @event.user_id,
                       photo: fixture_file_upload('placeholder.png', 'image/png')
                     }
     end
