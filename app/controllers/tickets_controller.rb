@@ -3,7 +3,7 @@ class TicketsController < ApplicationController
   respond_to :js, :html
   
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.where(user_id: current_user.id)
     sorted_tickets = []
     events = Event.all.sort_by &:datetime
     events.each do |event|
@@ -31,6 +31,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.user_id = current_user.id
 
     @event = Event.find(@ticket.event_id)
     @event.update_attribute :available_tickets, @event.available_tickets-@ticket.num_booked

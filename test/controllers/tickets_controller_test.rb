@@ -7,18 +7,19 @@ class TicketsControllerTest < ActionController::TestCase
     @user = users(:one)
   end
 
-  test "should sign in user" do
-    sign_in @user
+  test "should get index" do
+    user = User.create!({
+      email: "test@gmail.com",
+      password: "password"
+    })
+    sign_in user
+    
+    get :index
     assert_response :success
-    assert @controller.instance_variable_set(:"@current_user", true)
-  end
+    assert_not_nil assigns(:tickets)
 
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  #   assert_not_nil assigns(:tickets)
-  #   # assert sorted by event datetime
-  # end
+    # assert sorted by event datetime
+  end
 
   test "should get new" do
     get :new
@@ -26,6 +27,12 @@ class TicketsControllerTest < ActionController::TestCase
   end
 
   test "should create ticket" do
+    user = User.create!({
+      email: "test@gmail.com",
+      password: "password"
+    })
+    sign_in user
+
     event = Event.create({
       available_tickets: @event.available_tickets,
       datetime: @event.datetime,
@@ -33,16 +40,17 @@ class TicketsControllerTest < ActionController::TestCase
       title: @event.title,
       total_tickets: @event.total_tickets,
       venue: @event.venue,
+        user_id: user.id,
       photo: fixture_file_upload('placeholder.png', 'image/png')
     })
     assert_difference('Ticket.count') do
-      post :create, ticket: { event_id: event.id, user_id: @ticket.user_id, num_booked: @ticket.num_booked }
+      post :create, ticket: { event_id: event.id, user_id: user.id, num_booked: @ticket.num_booked }
     end
     assert_redirected_to ticket_path(assigns(:ticket))
     
     ticket = Ticket.create({
       event_id: event.id,
-      user_id: @current_user,
+      user_id: user.id,
       num_booked: @ticket.num_booked
     })
     found_event = Event.find(ticket.event_id)

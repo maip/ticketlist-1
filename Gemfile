@@ -43,3 +43,10 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'tzinfo-data'
 gem 'paperclip', '~> 4.2'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl'
+  gem 'database_cleaner'
+end

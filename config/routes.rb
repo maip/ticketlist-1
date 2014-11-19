@@ -3,9 +3,7 @@ Rails.application.routes.draw do
   
   resources :events
   resources :tickets
-  resources :events
 
-  get 'welcome/index'
   get 'setting/index'
   post 'setting/upload'
   
