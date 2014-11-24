@@ -46,11 +46,13 @@ gem 'paperclip', '~> 4.2'
 
 group :development, :test do
   gem 'rspec'
-  gem 'rspec-rails'
   gem "zip-zip", ">= 0.1"
   gem "rubyzip", ">= 1.0.0"
+  gem 'factory_girl'
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver', '>= 2.44.0'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
+  gem 'warden', '~> 1.2.3'
   gem 'database_cleaner'
 end
