@@ -6,8 +6,8 @@ class TicketsControllerTest < ActionController::TestCase
     @event = events(:one)
 
     @user = User.create!({
-      email: "test@gmail.com",
-      password: "password"
+      email: 'test@gmail.com',
+      password: 'password'
     })
     sign_in @user
   end

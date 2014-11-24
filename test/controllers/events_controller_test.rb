@@ -5,22 +5,9 @@ class EventsControllerTest < ActionController::TestCase
     @event = events(:one)
     @future_event = events(:two)
 
-    @user = User.create!({
-      email: "test@gmail.com",
-      password: "password"
-    })
+    @user = users(:one)
     sign_in @user
   end
-
-  # test "should sign in user" do
-  #   user = User.create!({
-  #     email: "test@gmail.com",
-  #     password: "password"
-  #   })
-  #   sign_in user
-  #   assert_response :success
-  #   assert @controller.instance_variable_set(:"@current_user", true)
-  # end
 
   test "should get index" do
     get :index

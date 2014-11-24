@@ -45,8 +45,12 @@ gem 'tzinfo-data'
 gem 'paperclip', '~> 4.2'
 
 group :development, :test do
+  gem 'rspec'
   gem 'rspec-rails'
+  gem "zip-zip", ">= 0.1"
+  gem "rubyzip", ">= 1.0.0"
   gem 'capybara'
+  gem 'selenium-webdriver', '>= 2.44.0'
   gem 'factory_girl'
   gem 'database_cleaner'
 end
