@@ -4,7 +4,7 @@ include Warden::Test::Helpers
 Warden.test_mode!
 
 user = FactoryGirl.create(:user)
-user2 = FactoryGirl.create(:user)
+# user2 = FactoryGirl.create(:user)
 login_as(user, :scope => :user)
 
 feature 'user uploads avatar' do
@@ -150,17 +150,17 @@ feature 'user books a ticket' do
     expect(page).to have_content '1'
   end
 
-  scenario 'new ticket from another user' do
-    logout(:user)
-    login_as(user2, :scope => :user)
-    visit events_path
-    expect(page).to have_content 'Editedeventtitle'
-    first(:link, 'Show').click
-    click_on 'Book'
-    expect(page).to have_xpath ".//img[contains(@src,'placeholder.png')]"
-    expect(page).to have_content 'Editedeventtitle'
-    expect(page).to have_content '1'
-  end
+  # scenario 'new ticket from another user' do
+  #   logout(:user)
+  #   login_as(user2, :scope => :user)
+  #   visit events_path
+  #   expect(page).to have_content 'Editedeventtitle'
+  #   first(:link, 'Show').click
+  #   click_on 'Book'
+  #   expect(page).to have_xpath ".//img[contains(@src,'placeholder.png')]"
+  #   expect(page).to have_content 'Editedeventtitle'
+  #   expect(page).to have_content '1'
+  # end
 end
 
 feature 'user views ticket list' do
@@ -172,14 +172,14 @@ feature 'user views ticket list' do
     expect(page).to have_content '2'
   end
   
-  scenario 'ticket from user2' do
-    logout(:user)
-    login_as(user2, :scope => :user)
-    visit tickets_path
-    expect(page).to have_xpath ".//img[contains(@src,'placeholder.png')]"
-    expect(page).to have_content 'Editedeventtitle'
-    expect(page).to have_content '1'
-  end
+  # scenario 'ticket from user2' do
+  #   logout(:user)
+  #   login_as(user2, :scope => :user)
+  #   visit tickets_path
+  #   expect(page).to have_xpath ".//img[contains(@src,'placeholder.png')]"
+  #   expect(page).to have_content 'Editedeventtitle'
+  #   expect(page).to have_content '1'
+  # end
 end
 
 feature 'user deletes an event' do

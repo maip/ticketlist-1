@@ -30,3 +30,4 @@ TESTING INSTRUCTIONS
 6. The command, ```rake test``` will run the unit tests.
 7. Functional tests can be found in the "spec" folder.
 8. The command, ```bundle exec rspec``` will run the selenium test.
+9. If you need to rerun the tests, type ```rake db:drop``` and ```rake db:migrate``` to restart the test database.

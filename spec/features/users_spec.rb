@@ -7,7 +7,7 @@ feature 'user signs up' do
   scenario 'new user' do
     visit root_path
     click_on 'Sign up.'
-    fill_in 'user_email', with: 'user2@gmail.com'
+    fill_in 'user_email', with: 'user@gmail.com'
     fill_in 'user_password', with: '12345678'
     fill_in 'user_password_confirmation', with: '12345678'
     click_on 'Sign up'
@@ -19,7 +19,7 @@ feature 'user signs out' do
   scenario 'existing user signs out' do
     visit root_path
     click_on 'Log in.'
-    fill_in 'user_email', with: 'user2@gmail.com'
+    fill_in 'user_email', with: 'user@gmail.com'
     fill_in 'user_password', with: '12345678'
     click_on 'Log in'
     click_on 'Log out'
@@ -31,7 +31,7 @@ feature 'user signs in' do
   scenario 'existing user signs in again' do
     visit root_path
     click_on 'Log in.'
-    fill_in 'user_email', with: 'user2@gmail.com'
+    fill_in 'user_email', with: 'user@gmail.com'
     fill_in 'user_password', with: '12345678'
     click_on 'Log in'
     expect(page).to have_content 'Signed in successfully'
@@ -40,7 +40,7 @@ feature 'user signs in' do
   scenario 'existing user tries to sign in with wrong password' do
     visit root_path
     click_on 'Log in.'
-    fill_in 'user_email', with: 'user2@gmail.com'
+    fill_in 'user_email', with: 'user@gmail.com'
     fill_in 'user_password', with: '11111111'
     click_on 'Log in'
     expect(page).to have_content 'Invalid email or password.'
@@ -51,11 +51,11 @@ feature 'password' do
   scenario 'user updates password' do
     visit root_path
     click_on 'Log in.'
-    fill_in 'user_email', with: 'user2@gmail.com'
+    fill_in 'user_email', with: 'user@gmail.com'
     fill_in 'user_password', with: '12345678'
     click_on 'Log in'
     click_on 'Settings'
-    fill_in 'user_email', with: 'user2@gmail.com'
+    fill_in 'user_email', with: 'user@gmail.com'
     fill_in 'user_password', with: 'abcdefgh'
     fill_in 'user_password_confirmation', with: 'abcdefgh'
     fill_in 'user_current_password', with: '12345678'
