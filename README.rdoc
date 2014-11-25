@@ -20,3 +20,13 @@ MAC INSTRUCTIONS
 7. To set up the database ```rake db:migrate```
 8. Run the rails server by typing ```rails server``
 9. Run web application by accessing the address ```localhost:3000``` in a web browser
+
+TESTING INSTRUCTIONS
+1. To Test our software, you will need to first download Firefox at https://www.mozilla.org/en-US/firefox/new/
+2. First type ```bundle install``` to download dependencies.
+3. Then, set up the database ```rake db:migrate```
+4. Use this test command ```rake db:schema:load RAILS_ENV = test``` and any other tests can follow after.
+5. Unit tests can be found in the "test" folder
+6. The command, ```rake test``` will run the unit tests.
+7. Functional tests can be found in the "spec" folder.
+8. The command, ```bundle exec rspec``` will run the selenium test.
