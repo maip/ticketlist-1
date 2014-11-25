@@ -55,4 +55,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'warden', '~> 1.2.3'
   gem 'database_cleaner'
+  gem 'faker'
 end
