@@ -38,13 +38,13 @@ class EventsController < ApplicationController
   end
 
   def update
-    if params[:event][:available_tickets] > params[:event][:total_tickets]
-      flash[:alert] = "The number of available tickets is greater than the amount of total tickets."
-      redirect_to edit_event_path(@event)
-    else
+    # if params[:event][:available_tickets] > params[:event][:total_tickets]
+    #   flash[:alert] = "The number of available tickets is greater than the amount of total tickets."
+    #   redirect_to edit_event_path(@event)
+    # else
       @event.update(event_params)
       respond_with(@event)
-    end
+    # end
   end
 
   def destroy
