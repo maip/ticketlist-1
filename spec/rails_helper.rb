@@ -27,18 +27,18 @@ require 'capybara/rails'
 # If you are not using ActiveRecord, you can remove this line.
 ActiveRecord::Migration.maintain_test_schema!
 
-Capybara.register_driver :selenium do |app|
-  profile = Selenium::WebDriver::Firefox::Profile.new
-  Capybara::Selenium::Driver.new( app, :profile => profile)
-end
-Capybara.default_wait_time = 10
-Capybara.current_driver = :selenium
-Capybara.app_host = 'http://localhost:3000'
+# Capybara.register_driver :selenium do |app|
+#   profile = Selenium::WebDriver::Firefox::Profile.new
+#   Capybara::Selenium::Driver.new( app, :profile => profile)
+# end
+# Capybara.default_wait_time = 10
+# Capybara.current_driver = :selenium
+# Capybara.app_host = 'http://localhost:3000'
 
 RSpec.configure do |config|
-  config.include Devise::TestHelpers, :type => [:controller, :view, :helper]
-  config.include Capybara::DSL
-  config.include Warden::Test::Helpers
+  # config.include Devise::TestHelpers, :type => [:controller, :view, :helper]
+  # config.include Capybara::DSL
+  # config.include Warden::Test::Helpers
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -63,16 +63,16 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 
-  config.before(:suite) do
-    DatabaseCleaner[:active_record].strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  # config.before(:suite) do
+  #   DatabaseCleaner[:active_record].strategy = :transaction
+  #   DatabaseCleaner.clean_with(:truncation)
+  # end
 
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
+  # config.before(:each) do
+  #   DatabaseCleaner.start
+  # end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
+  # config.after(:each) do
+  #   DatabaseCleaner.clean
+  # end
 end
