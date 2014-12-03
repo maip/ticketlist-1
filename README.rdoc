@@ -31,3 +31,11 @@ TESTING INSTRUCTIONS
 7. Functional tests can be found in the "spec" folder.
 8. The command, ```bundle exec rspec``` will run the selenium test.
 9. If you need to rerun the tests, type ```rake db:drop``` and ```rake db:migrate``` to restart the test database.
+
+LOAD BALANCING
+1. Run ```bundle install``` to install gem thin.
+2. Install nginx1.7.7 from http://nginx.org/en/download.html
+3. nginx.conf file must be configured first.
+4. Use command ```start nginx```
+5. Use command ```thin start -a 127.0.0.1 -p 3000``` to start application server. To make another server, use the same command on a different port such as 3001 and 3002.
+6. The application with load balancing can be reached at address localhost:80 or as configured in nginx.conf.

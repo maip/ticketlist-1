@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
+# gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,6 +32,7 @@ gem 'spring',        group: :development
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'thin'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,10 +47,10 @@ gem 'tzinfo-data'
 gem 'paperclip', '~> 4.2'
 
 group :development, :test do
-  gem 'rspec'
-  gem "zip-zip", ">= 0.1"
-  gem "rubyzip", ">= 1.0.0"
-  gem 'factory_girl'
+  # gem 'rspec'
+  # gem "zip-zip", ">= 0.1"
+  # gem "rubyzip", ">= 1.0.0"
+  # gem 'factory_girl'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'selenium-webdriver', '>= 2.44.0'
